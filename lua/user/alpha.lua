@@ -30,10 +30,10 @@ function M.config()
   }
 
   dashboard.section.buttons.val = {
-    button("f", icons.ui.FindFile .. " Find file", ":Telescope find_files <CR>"),
+    button("f", icons.ui.FindFile .. " Find file", ":FzfLua files<CR>"),
     button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-    button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
-    button("t", icons.ui.Text .. " Find text", ":Telescope live_grep <CR>"),
+    button("r", icons.ui.History .. " Recent files", ":FzfLua oldfiles <CR>"),
+    button("t", icons.ui.Text .. " Find text", ":FzfLua live_grep <CR>"),
     button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
     button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
   }

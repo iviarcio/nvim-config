@@ -32,4 +32,11 @@ keymap("n", "[b", ":bp<cr>", opts)
 keymap("n", "]b", ":bn<cr>", opts)
 
 -- Terminal
-keymap("n", "<C-//>", ":ToggleTerm size=10 direction=horizontal name=term<cr>")
+keymap("n", "<c-t>", ":ToggleTerm size=10 direction=horizontal name=term<cr>", opts)
+
+-- Fzf
+keymap("n", "<c-p>", ":FzfLua files<CR>", opts)
+keymap("n", "<c-[>", ":FzfLua buffers<CR>", opts)
+keymap("n", "<c-g>", ":FzfLua grep<CR>", opts)
+keymap("n", "<c-l>", ":FzfLua live_grep<CR>", opts)
+keymap("n", "<c-]>", ":FzfLua builtin<CR>", opts)
