@@ -5,6 +5,8 @@ keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.transparent_enabled = true
+
 -- Yank to the end of line (like D == d$ & C == c$)
 keymap("n", "Y", "y$", opts)
 
