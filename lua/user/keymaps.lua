@@ -25,6 +25,9 @@ keymap("n", "#", "#zz", opts)
 keymap("n", "g*", "g*zz", opts)
 keymap("n", "g#", "g#zz", opts)
 
+keymap("n", "<Up>", "gk", opts)
+keymap("n", "<Down>", "gj", opts)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -42,3 +45,4 @@ keymap("n", "<c-[>", ":FzfLua buffers<CR>", opts)
 keymap("n", "<c-g>", ":FzfLua grep<CR>", opts)
 keymap("n", "<c-l>", ":FzfLua live_grep<CR>", opts)
 keymap("n", "<c-]>", ":FzfLua builtin<CR>", opts)
+

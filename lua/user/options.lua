@@ -38,7 +38,8 @@ vim.opt.hidden = true
 
 vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
-vim.opt.wrap = false -- display lines as one long line
+vim.opt.wrap = true 
+vim.opt.wrapmargin = 4
 vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
@@ -49,7 +50,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "FocusGained", "InsertLeave", "WinEnter
   group = augroup,
   pattern = "*",
   callback = function()
-    if vim.o.number then
+    if vim.opt.number then
       vim.opt.relativenumber = true
     end
   end,
@@ -58,8 +59,28 @@ vim.api.nvim_create_autocmd({"BufLeave", "FocusLost", "InsertEnter", "WinLeave"}
   group = augroup,
   pattern = "*",
   callback = function()
-    if vim.o.number then
+    if vim.opt.number then
       vim.opt.relativenumber = false
     end
   end,
 })
+
+-- Set up an autocommand group for custom color modifications
+vim.api.nvim_create_augroup("MyCustomColor", {clear = true})
+
+-- Define the function to modify some colors highlight
+local function colors_highlight()
+    vim.api.nvim_set_hl(0, "Comment", {fg = '#B4D0CB', bg = NONE, italic = true})
+    vim.api.nvim_set_hl(0, "CursorLineNR", { bg = NONE, bold = true })
+    vim.api.nvim_set_hl(0, 'LineNr', { fg = '#A5B3CE' })
+end
+
+-- Set up the autocommand to call the above function when the color scheme is Nord
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "nord",
+    callback = colors_highlight,
+    group = "MyCustomColor",
+})
+
+-- Clear the default CursorLine highlight and set CursorLineNR highlight
+vim.api.nvim_command("highlight clear CursorLine")
