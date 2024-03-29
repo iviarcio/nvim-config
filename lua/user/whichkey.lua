@@ -8,10 +8,9 @@ function M.config()
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
     [";"] = { "<cmd>terminal<CR>", "Term" },
     v = { "<cmd>vsplit<CR>", "Vertical Split" },
-    d = { name = "Debug" },
+    p = { "PeekOpen"},
     g = { name = "Git" },
     l = { name = "LSP" },
-    p = { name = "Plugins" },
   }
 
   local which_key = require "which-key"
@@ -26,6 +25,7 @@ function M.config()
       presets = {
         operators = false,
         motions = false,
+
         text_objects = false,
         windows = false,
         nav = false,

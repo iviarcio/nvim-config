@@ -13,32 +13,35 @@ vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10 -- pop up menu height
 vim.opt.pumblend = 10
--- vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
--- vim.opt.showtabline = 1 -- always show tabs
+
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
--- vim.opt.splitbelow = true -- force all horizontal splits to go below current window
--- vim.opt.splitright = true -- force all vertical splits to go to the right of current window
+vim.opt.splitbelow = true -- force all horizontal splits to go below current window
+vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 100 -- faster completion (4000ms default)
-vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+
+vim.opt.writebackup = false -- if a file is being edited by another program (or was written
+                            -- to file while editing with another program), it is not allowed to be edited
+
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4 -- insert 2 spaces for a tab
+
 -- vim.opt.cursorline = true -- highlight the current line
+
 vim.opt.number = true -- set numbered lines
 vim.opt.laststatus = 3
 vim.opt.showcmd = false
--- vim.opt.ruler = false
 vim.opt.hidden = true
 
 vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
-vim.opt.wrap = true 
+vim.opt.wrap = true
 vim.opt.wrapmargin = 4
 vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
@@ -70,8 +73,8 @@ vim.api.nvim_create_augroup("MyCustomColor", {clear = true})
 
 -- Define the function to modify some colors highlight
 local function colors_highlight()
-    vim.api.nvim_set_hl(0, "Comment", {fg = '#B4D0CB', bg = NONE, italic = true})
-    vim.api.nvim_set_hl(0, "CursorLineNR", { bg = NONE, bold = true })
+    vim.api.nvim_set_hl(0, "Comment", {fg = '#B4D0CB', bg = 'NONE', italic = true})
+    vim.api.nvim_set_hl(0, "CursorLineNR", { bg = 'NONE', bold = true })
     vim.api.nvim_set_hl(0, 'LineNr', { fg = '#A5B3CE' })
 end
 

@@ -41,8 +41,9 @@ keymap("n", "<c-t>", ":ToggleTerm size=10 direction=horizontal name=term<cr>", o
 
 -- Fzf
 keymap("n", "<c-p>", ":FzfLua files<CR>", opts)
-keymap("n", "<c-[>", ":FzfLua buffers<CR>", opts)
+keymap("n", "<c-]>", ":FzfLua buffers<CR>", opts)
 keymap("n", "<c-g>", ":FzfLua grep<CR>", opts)
 keymap("n", "<c-l>", ":FzfLua live_grep<CR>", opts)
-keymap("n", "<c-]>", ":FzfLua builtin<CR>", opts)
 
+-- Markdown (peek.nvim)
+keymap("n", "<Leader>p", ":PeekOpen<CR>", opts)
