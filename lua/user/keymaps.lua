@@ -47,3 +47,6 @@ keymap("n", "<c-l>", ":FzfLua live_grep<CR>", opts)
 
 -- Markdown (peek.nvim)
 keymap("n", "<Leader>p", ":PeekOpen<CR>", opts)
+
+-- Oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
