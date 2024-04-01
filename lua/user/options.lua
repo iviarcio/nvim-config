@@ -87,3 +87,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- Clear the default CursorLine highlight and set CursorLineNR highlight
 vim.api.nvim_command("highlight clear CursorLine")
+
+-- Syntax highlight for tablegen files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.td",
+  command = "set syntax=tablegen",
+})
