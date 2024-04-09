@@ -30,7 +30,7 @@ vim.opt.writebackup = false -- if a file is being edited by another program (or 
 
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4 -- insert 2 spaces for a tab
+vim.opt.tabstop = 4 -- insert 4 spaces for a tab
 
 -- vim.opt.cursorline = true -- highlight the current line
 
@@ -39,10 +39,9 @@ vim.opt.laststatus = 3
 vim.opt.showcmd = false
 vim.opt.hidden = true
 
-vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
+vim.opt.numberwidth = 4 -- set number column width to 4 {default}
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
-vim.opt.wrap = true
-vim.opt.wrapmargin = 4
+vim.opt.linebreak = true
 vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
