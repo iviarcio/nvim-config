@@ -92,3 +92,24 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = "*.td",
   command = "set syntax=tablegen",
 })
+
+-- Syntax highlight for llvm files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.ll",
+  command = "set syntax=llvm",
+})
+
+-- Syntax highlight for mlir files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.mlir",
+  command = "set syntax=mlir",
+})
+
+-- Syntax highlight for mir files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.mir",
+  command = "set syntax=mir",
+})
+
+-- (Exuberant/Universal) Ctags
+vim.opt.tags = '.tags'

@@ -50,3 +50,9 @@ keymap("n", "<Leader>p", ":PeekOpen<CR>", opts)
 
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+function RTags()
+  vim.cmd [[!ctags -f .tags --languages=all --exclude=.git -R .]]
+end
+
+keymap("n", "<Leader>x", RTags, opts)

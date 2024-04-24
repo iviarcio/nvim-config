@@ -5,10 +5,11 @@ local M = {
 function M.config()
   local mappings = {
     q = { "<cmd>confirm q<CR>", "Quit" },
-    h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    [";"] = { "<cmd>terminal<CR>", "Term" },
+    h = { "<cmd>nohlsearch<CR>", "Clear HlSearch" },
+    [";"] = { "<cmd>terminal<CR>", "Open Terminal" },
     v = { "<cmd>vsplit<CR>", "Vertical Split" },
-    p = { "PeekOpen"},
+    p = { "Markdown Viewer"},
+    x = { "Refresh CTags"},
     g = { name = "Git" },
     l = { name = "LSP" },
   }
