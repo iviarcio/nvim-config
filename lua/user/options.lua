@@ -72,7 +72,7 @@ vim.api.nvim_create_augroup("MyCustomColor", {clear = true})
 
 -- Define the function to modify some colors highlight
 local function colors_highlight()
-    vim.api.nvim_set_hl(0, "Comment", {fg = '#B4D0CB', bg = 'NONE', italic = true})
+    vim.api.nvim_set_hl(0, "Comment", {fg = '#B4D0CB', bg = 'NONE', italic = false})
     vim.api.nvim_set_hl(0, "CursorLineNR", { bg = 'NONE', bold = true })
     vim.api.nvim_set_hl(0, 'LineNr', { fg = '#A5B3CE' })
 end
@@ -110,6 +110,8 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = "*.mir",
   command = "set syntax=mir",
 })
+
+vim.api.nvim_command('set commentstring=//%s')
 
 -- (Exuberant/Universal) Ctags
 vim.opt.tags = '.tags'

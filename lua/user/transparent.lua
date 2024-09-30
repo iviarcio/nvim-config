@@ -11,7 +11,7 @@ M.init = function()
             'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
             'EndOfBuffer',
         },
-        extra_groups = {}, -- table: additional groups that should be cleared
+        extra_groups = {'SpecialComment',}, -- table: additional groups that should be cleared
         exclude_groups = {}, -- table: groups you don't want to clear
     })
 end

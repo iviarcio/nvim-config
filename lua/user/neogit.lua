@@ -9,10 +9,10 @@ local M = {
 
 function M.config()
   local icons = require "user.icons"
-  local wk = require "which-key"
-  wk.register {
-    ["<leader>gg"] = { "<cmd>Neogit<CR>", "Neogit" },
-  }
+  -- local wk = require "which-key"
+  -- wk.register {
+  --   { "<leader>gg", "<cmd>Neogit<CR>", desc = "Neogit" },
+  -- }
 
   require("neogit").setup {
     auto_refresh = true,
