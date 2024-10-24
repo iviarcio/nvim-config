@@ -56,3 +56,14 @@ function RTags()
 end
 
 keymap("n", "<Leader>x", RTags, opts)
+
+-- Function to clear search highlights
+function clear_search_highlights()
+  if vim.v.hlsearch == 1 then
+    vim.cmd('nohlsearch')
+  end
+end
+
+-- Bind Enter to clear highlights after search
+keymap('n', '<CR>', ':lua clear_search_highlights()<CR>', opts)
+keymap('n', '<Esc>', ':lua clear_search_highlights()<CR>', opts)
