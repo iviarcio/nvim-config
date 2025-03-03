@@ -115,3 +115,12 @@ vim.api.nvim_command('set commentstring=//%s')
 
 -- (Exuberant/Universal) Ctags
 vim.opt.tags = '.tags'
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp", "h", "td" },
+  callback = function()
+    vim.bo.shiftwidth = 2   -- Define o recuo automático como 2 espaços
+    vim.bo.tabstop = 2      -- Define que um caractere de tabulação é equivalente a 2 espaços
+    vim.bo.softtabstop = 2  -- Define que um Tab ou Backspace remove 2 espaços
+  end,
+})
