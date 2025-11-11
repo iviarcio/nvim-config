@@ -1,6 +1,7 @@
 -- disable netrw at the very start
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_perl_provider = 0
 
 vim.opt.backup = false --  does not create a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
