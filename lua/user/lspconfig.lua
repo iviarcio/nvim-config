@@ -39,27 +39,10 @@ M.toggle_inlay_hints = function()
 end
 
 function M.config()
-  -- local wk = require "which-key"
-  -- wk.register {
-  --   { "leaderld", "<cmd>lua vim.diagnostic.disable()<cr>", desc = "Disable Diagnostic" },
-  --   { "<leader>le", "<cmd>lua vim.diagnostic.enable()<cr>", desc = "Enable Diagnostic" },
-  --   { "<leader>lf", "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>", desc = "Format" },
-  --   { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints" },
-  --   { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
-  --   { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
-  --   { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
-  --   { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-  --   { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
-  --   { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-  -- }
-  -- wk.register {
-  --   { "<leader>la", group = "LSP" },
-  --   { "<leader>laa", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "v" },
-  -- }
-
   local lspconfig = require "lspconfig"
   local icons = require "user.icons"
 
+  -- Define os servidores que você deseja configurar
   local servers = {
     "lua_ls",
     "cssls",
@@ -75,9 +58,13 @@ function M.config()
 
   lspconfig.mlir_lsp_server.setup({
     cmd = {"/usr/local/opt/llvm/bin/mlir-lsp-server"},
+    on_attach = M.on_attach, -- Adicionando on_attach para ter os keymaps e inlay hints
+    capabilities = M.common_capabilities(),
   })
   lspconfig.tblgen_lsp_server.setup({
     cmd = {"/usr/local/opt/llvm/bin/tblgen-lsp-server"},
+    on_attach = M.on_attach, -- Adicionando on_attach
+    capabilities = M.common_capabilities(),
   })
 
   local default_diagnostic_config = {
@@ -110,10 +97,11 @@ function M.config()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
+  -- Configurando handlers do LSP para usar border="rounded"
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-  require("lspconfig.ui.windows").default_options.border = "rounded"
 
+  -- Itera e configura os servidores padrão
   for _, server in pairs(servers) do
     local opts = {
       on_attach = M.on_attach,
