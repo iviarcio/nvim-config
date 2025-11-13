@@ -39,7 +39,7 @@ M.toggle_inlay_hints = function()
 end
 
 function M.config()
-  local lspconfig = require "lspconfig"
+  -- local lspconfig = require "lspconfig"
   local icons = require "user.icons"
 
   -- Define os servidores que você deseja configurar
@@ -56,16 +56,16 @@ function M.config()
     "clangd",
   }
 
-  lspconfig.mlir_lsp_server.setup({
-    cmd = {"/usr/local/opt/llvm/bin/mlir-lsp-server"},
-    on_attach = M.on_attach, -- Adicionando on_attach para ter os keymaps e inlay hints
-    capabilities = M.common_capabilities(),
-  })
-  lspconfig.tblgen_lsp_server.setup({
-    cmd = {"/usr/local/opt/llvm/bin/tblgen-lsp-server"},
-    on_attach = M.on_attach, -- Adicionando on_attach
-    capabilities = M.common_capabilities(),
-  })
+  -- lspconfig.mlir_lsp_server.setup({
+  --   cmd = {"/usr/local/opt/llvm/bin/mlir-lsp-server"},
+  --   on_attach = M.on_attach, -- Adicionando on_attach para ter os keymaps e inlay hints
+  --   capabilities = M.common_capabilities(),
+  -- })
+  -- lspconfig.tblgen_lsp_server.setup({
+  --   cmd = {"/usr/local/opt/llvm/bin/tblgen-lsp-server"},
+  --   on_attach = M.on_attach, -- Adicionando on_attach
+  --   capabilities = M.common_capabilities(),
+  -- })
 
   local default_diagnostic_config = {
     signs = {
@@ -117,7 +117,7 @@ function M.config()
       require("neodev").setup {}
     end
 
-    lspconfig[server].setup(opts)
+    -- lspconfig[server].setup(opts)
   end
 end
 
