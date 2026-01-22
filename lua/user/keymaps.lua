@@ -67,3 +67,11 @@ end
 -- Bind Enter to clear highlights after search
 keymap('n', '<CR>', ':lua clear_search_highlights()<CR>', opts)
 keymap('n', '<Esc>', ':lua clear_search_highlights()<CR>', opts)
+
+vim.keymap.set("n", "<leader>q", function()
+  if vim.fn.getwininfo(vim.fn.win_getid())[1].quickfix == 1 then
+    vim.cmd("cclose")
+  else
+    vim.cmd("copen")
+  end
+end, { desc = "Toggle Quickfix" })

@@ -11,6 +11,9 @@ M.init = function()
     vim.g.vimtex_view_skim_sync = 1
     -- Ativa a atualização automática do PDF ao compilar
     vim.g.vimtex_view_skim_activate = 1
+    -- abre a quickfix só quando há erro
+    vim.g.vimtex_quickfix_mode = 2
+    vim.g.vimtex_quickfix_open_on_warning = 0
 end
 
 return M
