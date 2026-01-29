@@ -69,27 +69,56 @@ vim.api.nvim_create_autocmd({"BufLeave", "FocusLost", "InsertEnter", "WinLeave"}
   end,
 })
 
+-- Define the function to clear the background for comment
+local function clear_comment_bg()
+  local groups = {
+    "Comment",
+    "@comment",
+    "@comment.cpp",
+    "@lsp.type.comment",
+    "@lsp.type.comment.cpp",
+  }
+
+  for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "NONE" })
+  end
+end
+
+-- Define the function to modify foreground colors in comment
+local function nord_comment_fg()
+  local fg = "#DBD5CA" -- old: B4D0CB
+
+  local groups = {
+    "Comment",
+    "@comment",
+    "@comment.cpp",
+    "@lsp.type.comment",
+    "@lsp.type.comment.cpp",
+  }
+
+  for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, {
+      fg = fg,
+      bg = "NONE",
+      italic = false,
+    })
+  end
+end
+
 -- Set up an autocommand group for custom color modifications
 vim.api.nvim_create_augroup("MyCustomColor", {clear = true})
 
--- Define the function to modify some colors highlight
-local function colors_highlight()
-    vim.api.nvim_set_hl(0, "Comment", {fg = '#DBD5CA', bg = 'NONE', italic = false}) -- old: B4D0CB
-    vim.api.nvim_set_hl(0, "CursorLineNR", { bg = 'NONE', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNr', {fg = '#A5B3CE' })
-    -- Treesitter captures
-    vim.api.nvim_set_hl(0, "@comment", {fg = '#DBD5CA', bg = "NONE" })
-    vim.api.nvim_set_hl(0, "@comment.cpp", {fg = '#DBD5CA', bg = "NONE" })
-    -- LSP semantic tokens
-    vim.api.nvim_set_hl(0, "@lsp.type.comment", {fg = '#DBD5CA', bg = "NONE" })
-    vim.api.nvim_set_hl(0, "@lsp.type.comment.cpp", {fg = '#DBD5CA', bg = "NONE" })
-end
-
--- Set up the autocommand to call the above function when the color scheme is Nord
 vim.api.nvim_create_autocmd("ColorScheme", {
-    pattern = "nord",
-    callback = colors_highlight,
-    group = "MyCustomColor",
+  group = "MyCustomColor",
+  callback = function()
+    -- always remove the background
+    clear_comment_bg()
+
+    -- only adjust fg to Nord
+    if vim.g.colors_name == "nord" then
+      nord_comment_fg()
+    end
+  end,
 })
 
 -- Clear the default CursorLine highlight and set CursorLineNR highlight
@@ -124,11 +153,11 @@ vim.api.nvim_command('set commentstring=//%s')
 -- (Exuberant/Universal) Ctags
 vim.opt.tags = '.tags'
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = { "c", "cpp", "h", "td" },
---   callback = function()
---     vim.bo.shiftwidth = 2
---     vim.bo.tabstop = 2
---     vim.bo.softtabstop = 2
---   end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "py", "java", "cs" },
+  callback = function()
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+    vim.bo.softtabstop = 4
+  end,
+})
