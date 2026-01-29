@@ -35,12 +35,32 @@ M.config = function()
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
     routes = {
-      filter = {
-        event = "msg_show",
-        kind = "",
-        find = "written",
+      {
+        filter = {
+          event = "msg_show",
+          kind = "",
+          find = "written",
+        },
+        opts = { skip = true },
       },
-      opts = { skip = true },
+
+      -- ⛔ silencia o warning de diagnostic signs
+      {
+        filter = {
+          event = "msg_show",
+          find = "Defining diagnostic signs",
+        },
+        opts = { skip = true },
+      },
+
+      -- ⛔ silencia o warning do vim.validate (peek.nvim)
+      {
+        filter = {
+          event = "msg_show",
+          find = "vim.validate is deprecated",
+        },
+        opts = { skip = true },
+      },
     },
     messages = {
       enabled = true, -- enables the Noice messages UI

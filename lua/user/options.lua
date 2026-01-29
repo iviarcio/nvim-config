@@ -30,8 +30,9 @@ vim.opt.writebackup = false -- if a file is being edited by another program (or 
                             -- to file while editing with another program), it is not allowed to be edited
 
 vim.opt.expandtab = true -- convert tabs to spaces
-vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4 -- insert 4 spaces for a tab
+vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.softtabstop = 2
 
 -- vim.opt.cursorline = true -- highlight the current line
 
@@ -73,9 +74,15 @@ vim.api.nvim_create_augroup("MyCustomColor", {clear = true})
 
 -- Define the function to modify some colors highlight
 local function colors_highlight()
-    vim.api.nvim_set_hl(0, "Comment", {fg = '#B4D0CB', bg = 'NONE', italic = false})
+    vim.api.nvim_set_hl(0, "Comment", {fg = '#DBD5CA', bg = 'NONE', italic = false}) -- old: B4D0CB
     vim.api.nvim_set_hl(0, "CursorLineNR", { bg = 'NONE', bold = true })
-    vim.api.nvim_set_hl(0, 'LineNr', { fg = '#A5B3CE' })
+    vim.api.nvim_set_hl(0, 'LineNr', {fg = '#A5B3CE' })
+    -- Treesitter captures
+    vim.api.nvim_set_hl(0, "@comment", {fg = '#DBD5CA', bg = "NONE" })
+    vim.api.nvim_set_hl(0, "@comment.cpp", {fg = '#DBD5CA', bg = "NONE" })
+    -- LSP semantic tokens
+    vim.api.nvim_set_hl(0, "@lsp.type.comment", {fg = '#DBD5CA', bg = "NONE" })
+    vim.api.nvim_set_hl(0, "@lsp.type.comment.cpp", {fg = '#DBD5CA', bg = "NONE" })
 end
 
 -- Set up the autocommand to call the above function when the color scheme is Nord
@@ -117,11 +124,11 @@ vim.api.nvim_command('set commentstring=//%s')
 -- (Exuberant/Universal) Ctags
 vim.opt.tags = '.tags'
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "h", "td" },
-  callback = function()
-    vim.bo.shiftwidth = 2   -- Define o recuo automático como 2 espaços
-    vim.bo.tabstop = 2      -- Define que um caractere de tabulação é equivalente a 2 espaços
-    vim.bo.softtabstop = 2  -- Define que um Tab ou Backspace remove 2 espaços
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "c", "cpp", "h", "td" },
+--   callback = function()
+--     vim.bo.shiftwidth = 2
+--     vim.bo.tabstop = 2
+--     vim.bo.softtabstop = 2
+--   end,
+-- })

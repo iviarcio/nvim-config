@@ -39,10 +39,9 @@ M.toggle_inlay_hints = function()
 end
 
 function M.config()
-  -- local lspconfig = require "lspconfig"
-  local icons = require "user.icons"
+  local icons = require("user.icons")
 
-  -- Define os servidores que você deseja configurar
+  -- Define serves to configure 
   local servers = {
     "lua_ls",
     "cssls",
@@ -56,16 +55,19 @@ function M.config()
     "clangd",
   }
 
-  -- lspconfig.mlir_lsp_server.setup({
-  --   cmd = {"/usr/local/opt/llvm/bin/mlir-lsp-server"},
-  --   on_attach = M.on_attach, -- Adicionando on_attach para ter os keymaps e inlay hints
-  --   capabilities = M.common_capabilities(),
-  -- })
-  -- lspconfig.tblgen_lsp_server.setup({
-  --   cmd = {"/usr/local/opt/llvm/bin/tblgen-lsp-server"},
-  --   on_attach = M.on_attach, -- Adicionando on_attach
-  --   capabilities = M.common_capabilities(),
-  -- })
+  vim.lsp.config.mlir_lsp_server = {
+    cmd = { "/usr/local/opt/llvm/bin/mlir-lsp-server" },
+    on_attach = M.on_attach,
+    capabilities = M.common_capabilities(),
+  }
+  vim.lsp.enable("mlir_lsp_server")
+
+  vim.lsp.config.tblgen_lsp_server = {
+    cmd = { "/usr/local/opt/llvm/bin/tblgen-lsp-server" },
+    on_attach = M.on_attach,
+    capabilities = M.common_capabilities(),
+  }
+  vim.lsp.enable("tblgen_lsp_server")
 
   local default_diagnostic_config = {
     signs = {
@@ -117,7 +119,9 @@ function M.config()
       require("neodev").setup {}
     end
 
-    -- lspconfig[server].setup(opts)
+    vim.lsp.config[server] = opts
+    vim.lsp.enable(server)
+
   end
 end
 
