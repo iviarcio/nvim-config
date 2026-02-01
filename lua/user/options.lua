@@ -86,7 +86,7 @@ end
 
 -- Define the function to modify foreground colors in comment
 local function nord_comment_fg()
-  local fg = "#DBD5CA" -- old: B4D0CB
+  local fg = "#F1E4F8" -- old: B4D0CB, last: DBD5CA
 
   local groups = {
     "Comment",
