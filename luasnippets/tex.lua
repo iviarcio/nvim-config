@@ -24,6 +24,16 @@ ls.add_snippets("tex", {
     t("\\frac{"), i(1), t("}{"), i(2), t("}"), i(0)
   }),
 
+  -- Atalho para Frações 2 linhas (Gatilho: df)
+  s("df", {
+    t("\\dfrac{"), i(1), t("}{"), i(2), t("}"), i(0)
+  }),
+
+  -- Atalho para Raízes (Gatilho: sq)
+  s("sq", {
+    t("\\sqrt["), i(1), t("]{"), i(2), t("}"), i(0)
+  }),
+
   -- Atalho para Itens (Gatilho: it)
   s("it", {
     t("\\item "), i(0)
@@ -31,7 +41,7 @@ ls.add_snippets("tex", {
 
   -- Atalho para \bcancel (Gatilho: bc)
   s("bc", {
-    t("\\bcancel "), i(0)
+    t("\\bcancel{"), i(1), t("}"), i(0)
   }),
 
   -- Atalho para \problemitems (Gatilho: pri)
