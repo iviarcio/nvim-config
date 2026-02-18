@@ -5,6 +5,18 @@ local M = {
 }
 
 function M.config()
+  --  manual configuration (bug CLI tree-sitter CLI)
+  local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+  
+  parser_config.mlir = {
+    install_info = {
+      url = "https://github.com/zeljkic/tree-sitter-mlir", -- parser
+      files = { "src/parser.c", "src/scanner.cc" },       -- C/C++ files
+      branch = "main",
+    },
+    filetype = "mlir",
+  }
+
   require("nvim-treesitter.configs").setup({
     ensure_installed = {
       "c",
@@ -22,8 +34,6 @@ function M.config()
 
     highlight = {
       enable = true,
-      -- Eu recomendo começar com false para evitar “double highlight”.
-      -- Se você quiser manter regex do Vim como fallback, use true (não uma lista).
       additional_vim_regex_highlighting = false,
     },
 
