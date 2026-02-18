@@ -11,6 +11,7 @@ function M.config()
       "cpp",
       "lua",
       "vim",
+      "mlir",
       "bash",
       "python",
       "regex",
